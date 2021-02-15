@@ -3,10 +3,7 @@ import {
   View, 
   Image,
   StyleSheet,
-  Text,
-  Alert,
- 
-
+  Text
 } from 'react-native';
 import { Button ,Input} from 'react-native-elements';
 
@@ -38,7 +35,7 @@ function RegisterStackScreen({ navigation }) {
                 <Input placeholder='วันเกิด' leftIcon={{ type: 'font-awesome', name: 'calendar',size:20}} inputStyle={styles.InputText}/>
             </View>
             <View style={styles.ButtonNext}>
-              <Button onPress={() => Alert.alert('ยินดีต้อนรับ')}
+              <Button onPress={() =>  navigation.navigate("Question ")}
                   buttonStyle={{backgroundColor: "#ffffff",width:200 }}
                   title="ต่อไป" titleStyle={{ color: '#515151', fontSize:12,fontFamily:"Roboto" }}
                   
