@@ -3,6 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { 
   View, 
 } from 'react-native';
+import { Header} from 'react-native-elements'; 
  
 import Home from './HomeScreen'; 
 import ListChatScreen from './ListChatScreen';
@@ -15,8 +16,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function MyTabs() {
   return (
-    <View style={{ flex: 1,marginTop:50}}>
-    <View></View>
+    <View style={{ flex: 1}}>
     <Tab.Navigator
       initialRouteName="Feed"
       tabBarOptions={{
@@ -55,7 +55,7 @@ export default function MyTabs() {
         component={NotificationsScreen}
         options={{ tabBarIcon:({tintColor, focused})=>(  
           <Icon  
-              name={focused ? 'exclamation-circle' : 'exclamation-circle'}  
+              name={focused ? 'bell' : 'bell'}  
               color={tintColor}  
               size={25}  
           />  

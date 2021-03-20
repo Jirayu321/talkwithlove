@@ -6,45 +6,53 @@ import {
   Text
 } from 'react-native';
 import { Button ,Input} from 'react-native-elements';
+import { ScrollView } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 function RegisterStackScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <ScrollView>
         <View style={styles.Box}>
             <View><Image source={require('../assets/logo.png')} style={styles.ImageLogo}/></View>
             <View style={{justifyContent:"center"}}>
               <Text style={styles.logo}>สร้างบัญชี</Text>
             </View>
         </View> 
-        <View style={{flex:1, marginTop:50, height:200}}>
-          <View style={styles.BoxInput}>
-            <View style={{marginBottom:-20}}>
-              <Input placeholder='ชื่อผู้ใช้งาน' leftIcon={{ type: 'font-awesome', name: 'user',size:30}} inputStyle={styles.InputText}/>
-            </View>
-            <View style={{marginBottom:-20}}>
-              <Input placeholder='อีเมล์' leftIcon={{ type: 'font-awesome', name: 'envelope',size:20 }} inputStyle={styles.InputText}/>
-            </View>
-            <View style={{marginBottom:-20}}>
-              <Input placeholder='รหัสผ่าน' leftIcon={{ type: 'font-awesome', name: 'lock' ,size:30}} inputStyle={styles.InputText}/>
-            </View>
-            <View style={{marginBottom:-20}}>
-               <Input placeholder='ยืนยันรหัสผ่าน' leftIcon={{ type: 'font-awesome', name: 'lock',size:30 }} inputStyle={styles.InputText}/>
-            </View>
-            <View style={{marginBottom:-20}}>
-                <Input placeholder='วันเกิด' leftIcon={{ type: 'font-awesome', name: 'calendar',size:20}} inputStyle={styles.InputText}/>
-            </View>
-            <View style={styles.ButtonNext}>
-              <Button onPress={() =>  navigation.navigate("Question ")}
-                  buttonStyle={{backgroundColor: "#ffffff",width:200 }}
-                  title="ต่อไป" titleStyle={{ color: '#515151', fontSize:12,fontFamily:"Roboto" }}
-                  
-              ></Button>
-            </View>
-          </View>
-          
+        <View style={{padding:20}}>
+          <Input
+            placeholder='ชื่อผู้ใช้งาน'
+            leftIcon={<Icon name='user' size={24} color='#404040'/> }
+            />
+            <Input
+            placeholder='อีเมล์'
+            leftIcon={<Icon name='envelope' size={24} color='#404040'/> }
+            />
+            <Input
+            placeholder='รหัสผ่าน'
+            leftIcon={<Icon name='lock' size={30} color='#404040'/> }
+            />
+            <Input
+            placeholder='ยืนยันรหัสผ่าน'
+            leftIcon={<Icon name='lock' size={30} color='#404040'/> }
+            />
+            <Input
+            placeholder='วันเกิด'
+            leftIcon={<Icon name='calendar' size={24} color='#404040'/> }
+            />
         </View>
-    </View>
+          <View style={{padding:20}}>
+              <Button onPress={() =>  navigation.navigate("Question ")}
+                  buttonStyle={{backgroundColor: "#ffffff"}}
+                  title="ต่อไป" titleStyle={{ color: '#515151', fontSize:14,fontFamily:"Roboto" }}>
+              </Button>
+            </View>
+        </ScrollView>
+      </View>
+        
+        
+  
   );
 }
 
@@ -65,7 +73,6 @@ const styles = StyleSheet.create({
       height:70
     },
     BoxInput:{
-      
       width:290,
       justifyContent: 'center',
       margin:40,
@@ -73,20 +80,13 @@ const styles = StyleSheet.create({
     },
     logo:{
       backgroundColor:"#FFFFFF",
-      borderRadius:20,
+      borderRadius:10,
       fontSize:18,
       width:210,
       height:50,
       color:"#232323",
       padding:10,
       top:-15
-      
-    },
-    ButtonNext:{
-      marginTop:30,
-      alignItems: 'flex-end', 
-      justifyContent: 'flex-start',
-      width:280
     },
     InputText:{
       marginLeft:10,

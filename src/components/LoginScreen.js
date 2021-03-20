@@ -5,35 +5,48 @@ import {
   StyleSheet,
   Text
 } from 'react-native';
-import { Button,Input} from 'react-native-elements';
-
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button ,Input } from 'react-native-elements';
 
 function LoginStackScreen({ navigation }) {
   return (
     <View style={styles.container}>
-        <View style={styles.Box}>
-            <View><Image source={require('../assets/logo.png')} style={styles.ImageLogo}/></View>
-            <View style={{justifyContent:"center"}}>
-              <Text style={styles.logo}>เข้าสู่ระบบ</Text>
+        <View>
+           <View  style={styles.Box}>
+             <View><Image source={require('../assets/logo.png')} style={styles.ImageLogo}/></View>
+              <View style={{justifyContent:"center"}}>
+                <Text style={styles.logo}>เข้าสู่ระบบ</Text>
+              </View>
+            </View> 
+            <View style={{padding:20}}>
+              <Input
+                placeholder='ชื่อผู้ใช้งาน'
+                leftIcon={
+                  <Icon
+                    name='user'
+                    size={24}
+                    color='#404040'
+                  />
+                }
+              />
+              <Input
+                placeholder='รหัสผ่าน'
+                leftIcon={
+                  <Icon
+                    name='lock'
+                    size={24}
+                    color='#404040'
+                  />
+                }
+              />
+            </View>
+            <View style={{padding:20}}>
+              <Button onPress={() =>  navigation.navigate("Home ")}
+                  buttonStyle={{backgroundColor: "#ffffff"}}
+                  title="เข้าสู่ระบบ" titleStyle={{ color: '#515151', fontSize:14,fontFamily:"Roboto" }}>
+              </Button>
             </View>
         </View> 
-        <View style={styles.BoxInput}>
-            <View style={{marginBottom:-20}}>
-                <Input placeholder='ชื่อผู้ใช้งาน' leftIcon={{ type: 'font-awesome', name: 'user',size:30}} inputStyle={styles.InputText}/>
-            </View>
-            <View style={{marginBottom:-20}}>
-                <Input placeholder='รหัสผ่าน' leftIcon={{ type: 'font-awesome', name: 'lock' ,size:30}} inputStyle={styles.InputText}/>
-            </View>
-        </View>
-        <View style={styles.ButtonPermission}>
-              <Button  onPress={() =>  navigation.navigate("Home ")}
-                  buttonStyle={{backgroundColor: "#ffffff" ,width:300}}
-                  title="เข้าใช้งาน" titleStyle={{ color: '#515151', fontSize:18,fontFamily:"Roboto" }}
-                  
-              ></Button>
-          </View>
-       
     </View>
   );
 }
@@ -41,7 +54,7 @@ function LoginStackScreen({ navigation }) {
 const styles = StyleSheet.create({
     container:{ 
             flex: 1,
-            backgroundColor:"#FDEEF9"  
+            backgroundColor:"#FDEEF9",
           },
     Box:{
             
@@ -63,9 +76,9 @@ const styles = StyleSheet.create({
           },
     logo:{
         backgroundColor:"#FFFFFF",
-        borderRadius:20,
+        borderRadius:10,
         fontSize:18,
-        width:210,
+        width:230,
         height:50,
         color:"#232323",
         padding:10,

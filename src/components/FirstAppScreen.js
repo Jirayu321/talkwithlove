@@ -19,31 +19,9 @@ function FirstApp({ navigation }) {
         <View><Text style={styles.Name_app}>TALK WITH LOVE</Text></View>
         
         <View style={styles.Box}>
-            <View style={styles.Text_login}><Text>ลงชื่อเข้าใช้งาน</Text></View>
-            <View style={styles.BoxButton}> 
-               
-                <View style={styles.INBoxButton}>
-                    <Button buttonStyle={{backgroundColor: "#ffffff"}}
-                      icon={
-                        <Icon name="facebook" color='#0C41FE' size={25} />
-                      }
-                        onPress={() => Alert.alert('เข้าสู่ระบบด้วย facebook')}
-                        
-                    />
-                </View>
-
-                <View style={styles.INBoxButton}>
-                <Button buttonStyle={{backgroundColor: "#ffffff"}}
-                      icon={
-                        <Icon name="google"   color='#f50' size={25} />
-                      }
-                        onPress={() => Alert.alert('เข้าสู่ระบบด้วย google ')}
-                    />
-                </View>
-            </View>
             <View style={styles.INBoxButtonLogin}>
               <Button 
-                  onPress={() => navigation.navigate("Register ")}
+                  onPress={() => navigation.navigate("Register")}
                   buttonStyle={{backgroundColor: "#ffffff" }}
                   title="เริ่มต้นใช้งาน" titleStyle={{ color: '#515151', fontSize:16,fontFamily:"Roboto",width:100}}
               ></Button>
@@ -51,7 +29,7 @@ function FirstApp({ navigation }) {
             <View style={styles.BoxButton}>
               <Text style={styles.TextToPage1}>มีบัญชีอยู่แล้วใช่ไหม ?</Text>
               <Button 
-                 onPress={() => navigation.navigate("Login ")} title="เข้าสู่ระบบ"titleStyle={{ color: 'blue', fontSize:12,fontFamily:"Roboto" }}
+                 onPress={() => navigation.navigate("Login")} title="เข้าสู่ระบบ"titleStyle={{ color: 'blue', fontSize:12,fontFamily:"Roboto" }}
                  type="clear"></Button>
             </View>
 
