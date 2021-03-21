@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { 
   View, 
-} from 'react-native';
-import { Header} from 'react-native-elements'; 
+} from 'react-native'; 
  
 import Home from './HomeScreen'; 
 import ListChatScreen from './ListChatScreen';
 import NotificationsScreen from './NotificationsScreen';
 import Icon from 'react-native-vector-icons/FontAwesome' 
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 
 
@@ -20,9 +19,9 @@ export default function MyTabs() {
     <Tab.Navigator
       initialRouteName="Feed"
       tabBarOptions={{
-        activeTintColor: '#000000',
+        activeTintColor: '#ffff',
         inactiveTintColor: '#ffff',
-        labelStyle: { fontSize: 12 },
+        labelStyle: {  color:'#ffff'},
         showIcon: true,  
         showLabel:false, 
         style: { backgroundColor: '#FDEEF9' }
