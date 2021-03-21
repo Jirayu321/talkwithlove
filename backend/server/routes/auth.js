@@ -23,7 +23,7 @@ const validate = [
 ]
 const generateToken = user =>{
    return jwt.sign(
-        {_id: user._id,email: user.email},
+        {_id: user._id,email: user.email,fullName:user.fullName},
             'SUPERSECRET123'
         );
 }
@@ -48,7 +48,7 @@ router.post('/register',validate, async (req , res)=>{
     }
 
     const userExist = await User.findOne({email:req.body.email});
-        if(userExist) return res.status(400).send('มีบัญชีที่ใช้ Email นี้อยู่แล้ว');
+        if(userExist) return res.status(400).send({success:false, message:'มีบัญชีที่ใช้ Email นี้อยู่แล้ว'});
 
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(req.body.password, salt)
@@ -57,7 +57,9 @@ router.post('/register',validate, async (req , res)=>{
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,
-        password: hashPassword
+        password: hashPassword,
+        confirmPassword:hashPassword,
+        date:req.body.date,
     })
 
     try {
@@ -65,9 +67,11 @@ router.post('/register',validate, async (req , res)=>{
         //check and assign a token
         const token = generateToken(user);
             res.send({success: true,
-                 data:{id:savedUser._id,
+                    data:{
+                    id:savedUser._id,
                     fullName:savedUser.fullName,
-                    emil:savedUser.email,
+                    email:savedUser.email,
+                    date:savedUser.date
                 },
                 token
             });
@@ -89,11 +93,11 @@ router.post('/login',loginValidation, async(req , res)=>{
     
     //check if password is correct
     const validPassword = await bcrypt.compare(req.body.password, user.password)
-    if(!validPassword) return res.status(404).send({success: false, message: "กรอก Email หรือ Password ไม่"})
+    if(!validPassword) return res.status(404).send({success: false, message: "กรอก Email หรือ Password ผิด"})
 
     //create and assign a token
-    const token = jwt.sign({id: user.id,email: user.email },'SUPERSECRET123')
-    res.header('auth-token',token).send({message: 'logged in successfully',token})
+    const token = generateToken(user)
+    res.header('auth-token',token).send({success: true,message: 'logged in successfully',token});
 });
 
 module.exports = router;
